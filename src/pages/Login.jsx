@@ -3,13 +3,13 @@ import React from 'react'
 function Login() {
   return (
     <div className="h-175 pt-20 pb-28 bg-base-200">
-      <div className="p-5 mx-auto max-w-5xl min-h-135 flex justify-between">
-        <div className="flex flex-col gap-4 mt-20 basis-3/5 ">
+      <div className="p-5 mx-auto max-w-5xl min-h-135 flex justify-between max-md:flex-col">
+        <div className="flex flex-col gap-4 mt-20 basis-3/5 max-md:text-center">
           <div className="text-5xl text-primary font-bold">Fakebook</div>
-          <h2 className='text-[30px] leading-8 mt-3 w-128.5 '>
+          <h2 className='text-[30px] leading-8 mt-3 w-128.5 max-md:w-auto'>
             Fakebook helps you connect and share with the people in your life.
           </h2>
-          <div className="badge badge-outline badge-error">This is not real facebook</div>
+          <div className="badge badge-outline badge-error max-md:mx-auto">This is not real facebook</div>
         </div>
         <div className="flex flex-1">
           <div className="card bg-base-100 w-full h-87.5 shadow-xl mt-8">
