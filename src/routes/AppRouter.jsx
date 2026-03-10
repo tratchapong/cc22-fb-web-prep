@@ -40,8 +40,8 @@ const userRouter = createBrowserRouter([
 
 
 function AppRouter() {
- const user = 'andy@ggg.mail'
-//  const user = null
+//  const user = 'andy@ggg.mail'
+ const user = null
  const finalRouter = user ? userRouter : guestRouter
  return (
   <Suspense fallback={<span className="loading loading-bars loading-md"></span>}>
