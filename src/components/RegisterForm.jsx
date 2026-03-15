@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { registerSchema } from '@/validations/schema'
 import axios from 'axios'
 import { useEffect } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
 
 function RegisterForm({ closeModal }) {
   const { formState, register, handleSubmit, reset } = useForm({
@@ -19,16 +20,19 @@ function RegisterForm({ closeModal }) {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000))
       const resp = await axios.post('http://localhost:8899/api/auth/register', data)
-      alert(JSON.stringify(resp.data, null, 2))
+      // alert(JSON.stringify(resp.data, null, 2))
+      toast.success(resp.data.message)
       document.getElementById('register-form').close()
     } catch (err) {
       console.dir(err)
       const errMsg = err.response?.data.message || err.message
-      alert(JSON.stringify(errMsg, null, 2))
+      toast.error(errMsg, { containerId : 'register-modal'})
+      // alert(JSON.stringify(errMsg, null, 2))
     }
   }
   return (
     <>
+      <ToastContainer containerId="register-modal" position='top-center' />
       <div className="text-3xl text-center opacity-70">Create a new account
         { isSubmitting && <span className="loading loading-spinner text-info mx-2"></span> }
       </div>
