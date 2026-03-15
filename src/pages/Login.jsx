@@ -1,7 +1,11 @@
 import RegisterForm from '@/components/RegisterForm'
-import React from 'react'
+import { useState } from 'react'
 
 function Login() {
+  const [closeModal, setCloseModal] = useState(false)
+
+  const hdlModalClose = () => setCloseModal(prv => !prv)
+
   return (
     <>
       <div className="h-175 pt-20 pb-28 bg-base-200">
@@ -12,16 +16,17 @@ function Login() {
               Fakebook helps you connect and share with the people in your life.
             </h2>
             <div className="badge badge-outline badge-error max-md:mx-auto">This is not real facebook</div>
+            <input type="checkbox" value="dark" className="toggle theme-controller max-md:mx-auto" />
           </div>
           <div className="flex flex-1">
             <div className="card bg-base-100 w-full h-87.5 shadow-xl mt-8">
               <form onSubmit={e=>e.preventDefault()}>
                 <div className="card-body gap-3 p-4">
                   <input type="text"
-                    className='input input-bordered w-full'
+                    className='input w-full'
                     placeholder='E-mail or Phone number' />
                   <input type="password"
-                    className='input input-bordered w-full'
+                    className='input w-full'
                     placeholder='password' />
                   <button className='btn btn-primary text-xl'>Login</button>
                   <p className="text-center cursor-pointer opacity-70">
@@ -37,12 +42,12 @@ function Login() {
           </div>
         </div>
       </div>
-      <dialog id="register-form" className="modal">
+      <dialog id="register-form" className="modal" onClose={hdlModalClose}>
         <div className="modal-box">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
           </form>
-          <RegisterForm />
+          <RegisterForm closeModal={closeModal}/>
         </div>
       </dialog>
     </>
